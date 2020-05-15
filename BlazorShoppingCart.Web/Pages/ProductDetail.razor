@@ -1,0 +1,28 @@
+﻿@page "/productdetail/{productId}"
+@inherits ProductDetailBase
+
+@{
+    var photoPath = "images/Products/" + (Product.ImageFile ?? "noimage.jpg");
+}
+
+<h3 class="text-center mt-4 mb-4">Details of Product</h3>
+
+<div class="col-md-8 divCenter">
+    <div class="card">
+        <div class="card-header text-center">
+            <h4>@Product.Name</h4>
+        </div>
+    </div>
+    <div class="card-body text-center">
+        <img class="card-img-top imageThumbnail" src="@photoPath" />
+
+        <h6 class="mt-1">@Product.ShortDescription</h6>
+        <h6>@Product.LongDescription</h6>
+        <h6>Price: <strong> @Product.UnitPrice.ToString("c") <strong>each</strong></strong></h6>
+    </div>
+    <div class="card-footer text-center">
+        <a href="/" class="btn btn-primary">Back</a>
+        <a href="@($"editproduct/{Product.ProductId}")" class="btn btn-primary">Edit</a>
+        <a href="#" class="btn btn-primary">Shop Item</a>
+    </div>
+</div>

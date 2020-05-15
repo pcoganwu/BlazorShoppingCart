@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "VlH81YlwLmLp0ClVqKfLTL/8AxRhGb8qsA4PaUqYL6kWRkX6tTJ0u9u/ZhPCg7fsxK6wx1ZWbSMrFKiETZ/B4Q==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\Blazor\\BlazorShoppingCart\\BlazorShoppingCart.Services\\BlazorShoppingCart.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Peter\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0-preview.3.20214.6\\system.componentmodel.annotations.5.0.0-preview.3.20214.6.nupkg.sha512"
+  ],
+  "logs": []
+}

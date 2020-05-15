@@ -1,0 +1,81 @@
+﻿@page "/editproduct/{productId}"
+@inherits EditProductBase
+
+@{
+    var photoPath = "images/Products/" + (Product.ImageFile ?? "noimage.jpg");
+}
+
+
+
+<div class="row">
+    <div class="col-md-5">
+        <EditForm Model="Product" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <h3 class="text-danger mt-4">Updating @Product.Name</h3>
+            <hr />
+            <ValidationSummary />
+            <div class="form-group row">
+                <label for="name" class="col-form-label">
+                    Name
+                </label>
+                <InputText id="name" @bind-Value="Product.Name" class="form-control"></InputText>
+                <ValidationMessage For="@(() => Product.Name)" />
+            </div>
+            <div class="form-group row">
+                <label for="shortDescription" class="col-form-label">
+                    Short Description
+                </label>
+                <InputText id="shortDescription" @bind-Value="Product.ShortDescription" class="form-control"></InputText>
+                <ValidationMessage For="@(() => Product.ShortDescription)" />
+            </div>
+            <div class="form-group row">
+                <label for="longDescription" class="col-form-label">
+                    Long Description
+                </label>
+                <InputText id="longDescription" @bind-Value="Product.LongDescription" class="form-control"></InputText>
+                <ValidationMessage For="@(() => Product.LongDescription)" />
+            </div>
+            <div class="form-group row">
+                <label for="category" class="col-form-label">
+                    Category
+                </label>
+                <InputSelect id="category" @bind-Value="Product.CategoryId" class="form-control">
+                    @foreach (var category in Categories)
+                    {
+                        <option value="@category.CategoryId">@category.ShortName</option>
+                    }
+                </InputSelect>
+                <div class="form-group row ml-1">
+                    <label for="unitPrice" class="col-form-label">
+                        Unit Price
+                    </label>
+                    <InputNumber id="unitPrice" @bind-Value="Product.UnitPrice" class="form-control"></InputNumber>
+                    <ValidationMessage For="@(() => Product.UnitPrice)" />
+                </div>
+                <div class="form-group row ml-1">
+                    <label for="onHand" class="col-form-label">
+                        On Hand
+                    </label>
+                    <InputNumber id="onHand" @bind-Value="Product.OnHand" class="form-control"></InputNumber>
+                    <ValidationMessage For="@(() => Product.OnHand)" />
+                </div>
+                <div class="form-group row ml-1">
+                    <label for="photo" class="col-form-label">
+                        Photo
+                    </label>
+                    <div class="custom-file">
+                        <InputFile id="photo" @bind-Value="Photo" class="custom-file-input"></InputFile>
+                        <label class="custom-file-label">Click here to change photo</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a href="/" class="btn btn-primary">Back to List</a>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+    <div class="col-md-6 mb-2 ml-5" style="margin-top:150px">
+        <img class="imageThumbnail" src="@photoPath" />
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@page "/"
+@inherits ProductListBase
+
+<h3 class="text-center mt-4">Product List</h3>
+
+@if (Products == null && Categories == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+<div class="mb-4">
+    <EditForm Model="Categories">
+        <div style="margin-left:320px">
+            <div class="row">
+                <label for="categorySelect" class="col-form-label">
+                    Select by Category:
+                </label>
+                <div class="col-md-5">
+                    <InputSelect id="categorySelect" @bind-Value="Category"
+                                 style="text-align-last:center" class="custom-select form-control">
+                        <option value="">Filter by Category</option>
+                        @foreach (var category in Categories)
+                            {
+                            <option value="@category.CategoryId">@category.ShortName</option>
+                            }
+                    </InputSelect>
+                </div>
+            </div>
+        </div>
+    </EditForm>
+</div>
+
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Short Description</th>
+            <th>Category</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Products)
+        {
+            var photoPath = "images/products/" + (product.ImageFile ?? "noimage.jpg");
+            <tr>
+                <td style="vertical-align:middle">@product.Name</td>
+                <td><img src="@photoPath" style="height:100px;width:100px"></td>
+                <td style="vertical-align:middle">@product.ShortDescription</td>
+                <td style="vertical-align:middle">@product.Category.ShortName</td>
+                <td style="vertical-align:middle">
+                    <a href="@($"editproduct/{product.ProductId}")">Edit</a> |
+                    <a href="@($"productdetail/{product.ProductId}")">Details</a> |
+                    <a href="#">Order Here</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
